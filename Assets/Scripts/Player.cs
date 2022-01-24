@@ -31,7 +31,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
     public bool canDropBombs = true;
     //Can the player drop bombs?
     public bool canMove = true;
-    //Can the player move?
-
+    //Can the player move
+    public Material mat;
     private int bombs = 2;
     //Amount of bombs the player has left to drop, gets decreased as the player
     //drops a bomb, increases as an owned bomb explodes
@@ -134,8 +134,20 @@ public class Player : MonoBehaviour
          RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit)) {
             //Debug.Log (hit.collider.gameObject.name);
-            hit.collider.GetComponent<Renderer>().material.color = new Color(0,0,1);
+           if (hit.collider.tag == "Fire"){
+               SceneManager.LoadScene("TestScene");
+           }
+
+            if (hit.collider.tag == "Ice_Stand"){
+                Debug.Log("one Half win");
+            }
+            hit.collider.GetComponent<Renderer>().material = mat;
+            //color = new Color(0,0,1);
+            hit.collider.tag = "Ice";
         }
+
+        
+
     }
 
     /// <summary>
@@ -178,9 +190,21 @@ public class Player : MonoBehaviour
         }
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit)) {
-            Debug.Log (hit.collider.gameObject.name);
-            hit.collider.GetComponent<Renderer>().material.color = new Color(1,0,0);
+
+             if (hit.collider.tag == "Ice"){
+               SceneManager.LoadScene("TestScene");
+           }
+            if (hit.collider.tag == "Fire_Stand"){
+                Debug.Log("one Half win");
+            }
+             hit.collider.GetComponent<Renderer>().material =  mat;
+            //hit.collider.GetComponent<Renderer>().material.color = new Color(1,0,0);
+            hit.collider.tag = "Fire";
+
+
         }
+
+          
     }
 
     /// <summary>

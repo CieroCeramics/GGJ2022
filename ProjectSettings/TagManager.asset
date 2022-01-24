@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - RedGuy
+  - BlueGuy
+  - Ice
+  - Fire
   layers:
   - Default
   - TransparentFX
