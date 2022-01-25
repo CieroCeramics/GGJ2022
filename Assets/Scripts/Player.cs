@@ -40,14 +40,14 @@ public class Player : MonoBehaviour
     public int playerNumber = 1;
     //Indicates what player this is: P1 or P2
     public float moveSpeed = 5f;
-    public bool canDropBombs = true;
-    //Can the player drop bombs?
+
     public bool canMove = true;
     //Can the player move
     public Material mat;
+    public Material mat2;
     private int bombs = 2;
-    //Amount of bombs the player has left to drop, gets decreased as the player
-    //drops a bomb, increases as an owned bomb explodes
+
+
 
     //Prefabs
     public GameObject bombPrefab;
@@ -93,9 +93,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Updates Player 1's movement and facing rotation using the WASD keys and drops bombs using Space
-    /// </summary>
+
     private void UpdatePlayer1Movement ()
     {
         if (Input.GetKey (KeyCode.W))
@@ -125,13 +123,7 @@ public class Player : MonoBehaviour
             myTransform.rotation = Quaternion.Euler (0, 90, 0);
             //animator.SetBool ("Walking", true);
         }
-
-        if (canDropBombs && Input.GetKeyDown (KeyCode.Space))
-        { //Drop bomb
-            DropBomb ();
-        }
-
-         RaycastHit hit;
+        RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit)) {
             //Debug.Log (hit.collider.gameObject.name);
            if (hit.collider.tag == "Fire"){
@@ -150,9 +142,7 @@ public class Player : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Updates Player 2's movement and facing rotation using the arrow keys and drops bombs using Enter or Return
-    /// </summary>
+
     private void UpdatePlayer2Movement ()
     {
         if (Input.GetKey (KeyCode.UpArrow))
@@ -183,11 +173,6 @@ public class Player : MonoBehaviour
             //animator.SetBool ("Walking", true);
         }
 
-        if (canDropBombs && (Input.GetKeyDown (KeyCode.KeypadEnter) || Input.GetKeyDown (KeyCode.Return)))
-        { //Drop Bomb. For Player 2's bombs, allow both the numeric enter as the return key or players 
-            //without a numpad will be unable to drop bombs
-            DropBomb ();
-        }
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit)) {
 
@@ -197,9 +182,11 @@ public class Player : MonoBehaviour
             if (hit.collider.tag == "Fire_Stand"){
                 Debug.Log("one Half win");
             }
+            if (hit.collider.tag == "Ground"){
              hit.collider.GetComponent<Renderer>().material =  mat;
             //hit.collider.GetComponent<Renderer>().material.color = new Color(1,0,0);
             hit.collider.tag = "Fire";
+            }
 
 
         }
@@ -207,22 +194,22 @@ public class Player : MonoBehaviour
           
     }
 
-    /// <summary>
-    /// Drops a bomb beneath the player
-    /// </summary>
-    private void DropBomb ()
-    {
-        if (bombPrefab)
-        { //Check if bomb prefab is assigned first
 
-        }
-    }
 
     public void OnTriggerEnter (Collider other)
     {
-        if (other.CompareTag ("Ground"))
+        if (other.CompareTag ("Water"))
         {
-            Debug.Log ("P" + playerNumber + " touch Ground!");
+            Debug.Log ("P" + playerNumber + " touch Water!");
+        }
+    }
+
+     public void OnTriggerExit (Collider other)
+    {
+        if (other.CompareTag ("Bridge"))
+        {
+            Debug.Log ("P" + playerNumber + " touch Water!");
+            //other.GetComponentInParent<Renderer>().material = mat2
         }
     }
 }

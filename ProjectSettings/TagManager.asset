@@ -9,6 +9,10 @@ TagManager:
   - BlueGuy
   - Ice
   - Fire
+  - Fire_Stand
+  - Ice_Stand
+  - Water
+  - Bridge
   layers:
   - Default
   - TransparentFX
