@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
     //====================================================================================================================//
 
 
-    public void ChangeState(TILE_STATE targetState, Material newMaterial)
+    public virtual void ChangeState(TILE_STATE targetState, Material newMaterial)
     {
         CurrentState = targetState;
         Renderer.material = newMaterial;

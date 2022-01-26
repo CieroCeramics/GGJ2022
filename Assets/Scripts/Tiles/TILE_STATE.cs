@@ -9,4 +9,5 @@ public enum TILE_STATE
     FIRE,
     ICE,
     WATER,
+    BRIDGE
 }

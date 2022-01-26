@@ -21,7 +21,6 @@ public class IceCharacterTileInteractions : CharacterTileInteractionBase
                 break;
             case TILE_STATE.ICE:
                 return;
-            
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -29,6 +28,7 @@ public class IceCharacterTileInteractions : CharacterTileInteractionBase
 
     public override void ExitTile(Tile tile)
     {
+        
     }
 
     //====================================================================================================================//

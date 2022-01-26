@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class CharacterTileInteractionBase : MonoBehaviour,IInteractWithTile
+public abstract class CharacterTileInteractionBase : MonoBehaviour, IInteractWithTile
 {
     [SerializeField, Header("Trail Effects")]
     //Can the player move
