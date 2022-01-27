@@ -13,6 +13,12 @@ public abstract class CharacterTileInteractionBase : MonoBehaviour, IInteractWit
 
     public abstract void ExitTile(Tile tile);
 
+    protected void DestroyCharacter(in string cause, in Object killedObject = null)
+    {
+        Debug.Log($"{gameObject.name} was killed by {cause}", killedObject);
+        Destroy(gameObject);
+    }
+
     //====================================================================================================================//
 
 }

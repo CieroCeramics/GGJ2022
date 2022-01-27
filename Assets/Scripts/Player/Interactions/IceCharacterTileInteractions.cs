@@ -11,13 +11,12 @@ public class IceCharacterTileInteractions : CharacterTileInteractionBase
         switch (tile.CurrentState)
         {
             case TILE_STATE.DEFAULT:
+            case TILE_STATE.WATER:
                 tile.ChangeState(TILE_STATE.ICE, trailMaterial);
                 break;
             case TILE_STATE.FIRE:
                 //TODO Dead
-                break;
-            case TILE_STATE.WATER:
-                //TODO Freeze Water
+                DestroyCharacter($"Stepping on {tile.gameObject.name} in {tile.CurrentState}", tile);
                 break;
             case TILE_STATE.ICE:
                 return;
