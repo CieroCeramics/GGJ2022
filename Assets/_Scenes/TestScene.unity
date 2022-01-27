@@ -4491,6 +4491,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f6da67dea675c44b72a13c6fc536d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foundColorObjectData:
+  - name: Floor
+    color: {r: 1, g: 1, b: 1, a: 1}
+    prefabObject: {fileID: 1724675553861444820, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
+      type: 3}
+  - name: Ice Character
+    color: {r: 0, g: 0, b: 1, a: 1}
+    prefabObject: {fileID: 8911845712452648714, guid: 0a7ab0e7b72b7d846b25f2e6c0bbaa29,
+      type: 3}
+  - name: Fire Portal
+    color: {r: 1, g: 0, b: 0.87058824, a: 1}
+    prefabObject: {fileID: 2181091687723928949, guid: 2ee19a4678a822b439a692ff27705f99,
+      type: 3}
+  - name: Pillar
+    color: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
+    prefabObject: {fileID: 7595758959370468864, guid: 7e4c875256b831d4da22abbaf485f52c,
+      type: 3}
+  - name: River Tile
+    color: {r: 0.011764706, g: 0, b: 0.5254902, a: 1}
+    prefabObject: {fileID: 642226640160021731, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
+      type: 3}
+  - name: Bridge
+    color: {r: 0.59607846, g: 0.34509805, b: 0.24705882, a: 1}
+    prefabObject: {fileID: 8725135954403514953, guid: e7dcaa94e2a1a8648b5e322232fea1a8,
+      type: 3}
+  - name: Ice Portal
+    color: {r: 0, g: 1, b: 1, a: 1}
+    prefabObject: {fileID: 8440568013547720643, guid: 7c1dc2e55843f0549909c2056a11ba49,
+      type: 3}
+  - name: Fire Character
+    color: {r: 1, g: 0, b: 0, a: 1}
+    prefabObject: {fileID: 4505692593081765185, guid: 54715dde4405b76488f2b4d71f351c1b,
+      type: 3}
   my_texture: {fileID: 2800000, guid: a267de1ce568177429050bb0fa974dbe, type: 3}
   GenericTileColor: {r: 1, g: 1, b: 1, a: 1}
   FireCharTileColor: {r: 1, g: 0, b: 0, a: 1}
@@ -14346,7 +14379,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: 0, z: 0, w: -1.3150283e-34}
+  m_BoundingSphereOverride: {x: 0, y: 2.2376e-41, z: 0, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -14550,22 +14583,22 @@ PrefabInstance:
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.7104925
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.7037048
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
@@ -14580,7 +14613,7 @@ PrefabInstance:
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 90.55
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}

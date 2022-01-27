@@ -1,9 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelGen : MonoBehaviour
 {
+    [Serializable]
+    public struct ColorObjectData
+    {
+        public string name;
+        public Color color;
+        public GameObject prefabObject;
+        public int count;
+    }
+
+    [SerializeField] 
+    private ColorObjectData[] foundColorObjectData;
 
     public Texture2D my_texture;
     public Color GenericTileColor;
@@ -15,7 +28,7 @@ public class LevelGen : MonoBehaviour
     public Color FirePortalTileColor;
     public Color LavaTileColor;
 
-    
+
     public GameObject Floor_Prefab;
     public GameObject FireChar_Prefab;
     public GameObject IceChar_Prefab;
@@ -25,15 +38,70 @@ public class LevelGen : MonoBehaviour
     public GameObject IcePortal_Prefab;
     public GameObject FirePortal_Prefab;
 
+    [ContextMenu("My Function")]
+    void Test()
+    {
+        var library = new Dictionary<Color, ColorObjectData>();
+
+        for (int x = 0; x <= my_texture.width + 1; x++)
+        {
+            for (int y = 0; y <= my_texture.height + 1; y++)
+            {
+                var foundColor = my_texture.GetPixel(x, y);
+
+                if (library.ContainsKey(foundColor))
+                {
+                    var temp = library[foundColor];
+                    temp.count++;
+                    library[foundColor] = temp;
+                    continue;
+                }
+
+                library.Add(foundColor, new ColorObjectData
+                {
+                    color = foundColor,
+                    count = 1
+                });
+            }
+        }
+
+        foundColorObjectData = library.Values.ToArray();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        for (int i =0; i<=my_texture.width+1; i ++)
+
+        //--------------------------------------------------------------------------------------------------------//
+        
+        var objectLibrary = new Dictionary<Color, GameObject>();
+        var objectCount = new Dictionary<Color, (string name, int count)>();
+
+        foreach (var colorData in foundColorObjectData)
         {
-            
-            for  (int j =0; j<=my_texture.height+1; j ++)
+            objectLibrary.Add(colorData.color, colorData.prefabObject);
+            objectCount.Add(colorData.color, (colorData.name, 0));
+        }
+
+        //--------------------------------------------------------------------------------------------------------//
+        
+        for (int i = 0; i <= my_texture.width + 1; i++)
+        {
+            for (int j = 0; j <= my_texture.height + 1; j++)
             {
-                if( my_texture.GetPixel(i,j) == GenericTileColor ){
+                var foundColor = my_texture.GetPixel(i, j);
+
+                if (objectLibrary.TryGetValue(foundColor, out var prefab) == false)
+                    return;
+
+                Instantiate(prefab, new Vector3(i, prefab.transform.position.y, j), prefab.transform.rotation);
+                
+                var test = objectCount[foundColor];
+                test.count++;
+                objectCount[foundColor] = test;
+
+
+                /*if( my_texture.GetPixel(i,j) == GenericTileColor ){
                 Instantiate(Floor_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
                 }
 
@@ -68,17 +136,15 @@ public class LevelGen : MonoBehaviour
                   }
                 
                   else if( my_texture.GetPixel(i,j) == LavaTileColor ){
-                Instantiate(Lava_Prefab, new Vector3(i, 0.5f, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                }
-
+                Instantiate(Lava_Prefab, new Vector3(i, 0.5f, j),  Quaternion.Euler(new Vector3(90, 0, 0)));*/
             }
+
         }
-         
+
+        foreach (var i in objectCount)
+        {
+            Debug.Log($"{i.Value.name}: {i.Value.count}");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
