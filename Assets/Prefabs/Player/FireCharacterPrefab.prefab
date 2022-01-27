@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b02d09a571e66d4e92744ef4a233eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailMaterial: {fileID: 2100000, guid: 0feca056b5ba6034a94f70c72c2e674d, type: 2}
+  trailMaterial: {fileID: 2100000, guid: bb707d1d6ee34e7438905b786b568663, type: 2}
 --- !u!114 &4826603528566948567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1023192610750012981, guid: f5061da130cabad42b02bd529cf8d98c, type: 3}
+  - {fileID: 2100000, guid: 0feca056b5ba6034a94f70c72c2e674d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
