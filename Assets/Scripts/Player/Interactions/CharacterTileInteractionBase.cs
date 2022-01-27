@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 public abstract class CharacterTileInteractionBase : MonoBehaviour, IInteractWithTile
 {
+    public static Action<CharacterTileInteractionBase> OnCharacterDied;
+    
     [SerializeField, Header("Trail Effects")]
     //Can the player move
     protected Material trailMaterial;
@@ -16,7 +20,9 @@ public abstract class CharacterTileInteractionBase : MonoBehaviour, IInteractWit
     protected void DestroyCharacter(in string cause, in Object killedObject = null)
     {
         Debug.Log($"{gameObject.name} was killed by {cause}", killedObject);
+        OnCharacterDied?.Invoke(this);
         Destroy(gameObject);
+        
     }
 
     //====================================================================================================================//
