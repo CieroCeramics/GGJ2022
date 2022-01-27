@@ -67,13 +67,9 @@ public class LevelGen : MonoBehaviour
 
         foundColorObjectData = library.Values.ToArray();
     }
-
-    // Start is called before the first frame update
-    void Start()
+    [ContextMenu("GenerateLevel")]
+    void GenLevel()
     {
-
-        //--------------------------------------------------------------------------------------------------------//
-        
         var objectLibrary = new Dictionary<Color, GameObject>();
         var objectCount = new Dictionary<Color, (string name, int count)>();
 
@@ -145,6 +141,14 @@ public class LevelGen : MonoBehaviour
         {
             Debug.Log($"{i.Value.name}: {i.Value.count}");
         }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        //--------------------------------------------------------------------------------------------------------//
+        
+
     }
 
 }
