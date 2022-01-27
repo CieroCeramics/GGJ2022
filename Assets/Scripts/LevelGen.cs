@@ -39,13 +39,13 @@ public class LevelGen : MonoBehaviour
     public GameObject FirePortal_Prefab;
 
     [ContextMenu("My Function")]
-    void Test()
+    void SearchImage()
     {
         var library = new Dictionary<Color, ColorObjectData>();
 
-        for (int x = 0; x <= my_texture.width + 1; x++)
+        for (int x = 0; x < my_texture.width; x++)
         {
-            for (int y = 0; y <= my_texture.height + 1; y++)
+            for (int y = 0; y < my_texture.height; y++)
             {
                 var foundColor = my_texture.GetPixel(x, y);
 
@@ -85,9 +85,9 @@ public class LevelGen : MonoBehaviour
 
         //--------------------------------------------------------------------------------------------------------//
         
-        for (int i = 0; i <= my_texture.width + 1; i++)
+        for (int i = 0; i < my_texture.width; i++)
         {
-            for (int j = 0; j <= my_texture.height + 1; j++)
+            for (int j = 0; j < my_texture.height; j++)
             {
                 var foundColor = my_texture.GetPixel(i, j);
 
