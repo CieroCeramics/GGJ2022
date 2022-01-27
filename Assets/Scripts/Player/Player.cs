@@ -47,36 +47,42 @@ public class Player : MonoBehaviour
 
     private void ProcessTileCollisions()
     {
-        
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastLayer.value))
+        ProcessHitObject(Physics.Raycast(transform.position, -Vector3.up, out var hit, raycastLayer.value)
+            ? hit.collider.gameObject
+            : null);
+    }
+
+    private void ProcessHitObject(in GameObject hitGameObject)
+    {
+        //If we're standing on the same Object ignore
+        if (hitGameObject == _currentTileObject)
+            return;
+
+        if (_currentTile != null)
         {
-            var collidingObject = hit.collider.gameObject;
-            
-            //If we're standing on the same Object ignore
-            if (collidingObject == _currentTileObject)
-                return;
-
-            if (_currentTile != null)
-            {
-                _playerInteractWithTiles.ExitTile(_currentTile);
+            _playerInteractWithTiles.ExitTile(_currentTile);
                 
-                if(_currentTile is ICharacterExit characterExit)
-                    characterExit.CharacterExited();
-            }
-
-            //Update Current Standing Tile
-            //--------------------------------------------------------------------------------------------------------//
-            
-            _currentTileObject = collidingObject;
-            _currentTile = collidingObject.GetComponent<Tile>();
-            
-            _playerInteractWithTiles.EnterTile(_currentTile);
-            
-            if(_currentTile is ICharacterEnter characterEnter)
-                characterEnter.CharacterEntered();
-
-            //--------------------------------------------------------------------------------------------------------//
+            if(_currentTile is ICharacterExit characterExit)
+                characterExit.CharacterExited();
         }
+
+        //Update Current Standing Tile
+        //--------------------------------------------------------------------------------------------------------//
+            
+        _currentTileObject = hitGameObject;
+        if (_currentTileObject == null)
+        {
+            _currentTile = null;
+            return;
+        }
+        _currentTile = hitGameObject.GetComponent<Tile>();
+            
+        _playerInteractWithTiles.EnterTile(_currentTile);
+            
+        if(_currentTile is ICharacterEnter characterEnter)
+            characterEnter.CharacterEntered();
+
+
+        //--------------------------------------------------------------------------------------------------------//
     }
 }
