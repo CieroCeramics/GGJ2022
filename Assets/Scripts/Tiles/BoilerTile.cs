@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BoilerTile : Tile
+public class BoilerTile : Tile, ICharacterExit
 {
     [Serializable]
     public class BoilerEvent : UnityEvent<bool> { }
@@ -38,6 +38,12 @@ public class BoilerTile : Tile
         //TODO We can set a material here as well when the boiler is active
         isActive = newState;
         unityEvent?.Invoke(isActive);
-        Debug.Log($"Boiler {(isActive ? "is Active" : "is INACTIVE")}");
+        Debug.Log($"{gameObject.name}<{nameof(BoilerTile)}> {(isActive ? "is Active" : "is INACTIVE")}", gameObject);
+    }
+
+
+    public void CharacterExited()
+    {
+        ChangeState(TILE_STATE.DEFAULT, null);
     }
 }

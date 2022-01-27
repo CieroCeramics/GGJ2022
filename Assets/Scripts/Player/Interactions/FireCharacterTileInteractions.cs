@@ -14,6 +14,7 @@ public class FireCharacterTileInteractions : CharacterTileInteractionBase
             case TILE_STATE.WATER:
             case TILE_STATE.ICE:
                 //TODO Dead
+                DestroyCharacter($"Stepping on {tile.gameObject.name} in {tile.CurrentState}", tile);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
