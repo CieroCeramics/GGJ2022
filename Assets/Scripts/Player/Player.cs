@@ -56,9 +56,14 @@ public class Player : MonoBehaviour
             //If we're standing on the same Object ignore
             if (collidingObject == _currentTileObject)
                 return;
-            
-            if(_currentTile != null)
+
+            if (_currentTile != null)
+            {
                 _playerInteractWithTiles.ExitTile(_currentTile);
+                
+                if(_currentTile is ICharacterExit characterExit)
+                    characterExit.CharacterExited();
+            }
 
             //Update Current Standing Tile
             //--------------------------------------------------------------------------------------------------------//
@@ -67,6 +72,9 @@ public class Player : MonoBehaviour
             _currentTile = collidingObject.GetComponent<Tile>();
             
             _playerInteractWithTiles.EnterTile(_currentTile);
+            
+            if(_currentTile is ICharacterEnter characterEnter)
+                characterEnter.CharacterEntered();
 
             //--------------------------------------------------------------------------------------------------------//
         }

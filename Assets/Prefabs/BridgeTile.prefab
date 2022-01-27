@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428394495376637268}
   m_LocalRotation: {x: 0.70394593, y: -0, z: -0, w: -0.71025366}
-  m_LocalPosition: {x: 0.5, y: -0.546, z: -0.212}
+  m_LocalPosition: {x: 0.5, y: -0.501, z: -0.256}
   m_LocalScale: {x: 1.1266103, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8241086218373529843}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 47aaef84ec92e264386242d3a57fd412, type: 3}
+  - {fileID: 2100000, guid: 606b738b5f82e0a4cbf17ea9fe54bd27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,6 +79,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3952510415113175780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725135954403514953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548eed481e82ac5479500ca12d68c9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingState: 3
+  bridgeRenderer: {fileID: 8941344141536369793}
+  startingBridgeState: 0
 --- !u!1001 &8213524853172602538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,37 +104,37 @@ PrefabInstance:
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.025
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.016
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
@@ -129,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
@@ -146,8 +161,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeTile
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1615535347919499828, guid: 0f6646396061fcc44aca0d3c07d6a8fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0f6646396061fcc44aca0d3c07d6a8fe, type: 3}
+--- !u!1 &8725135954403514953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 642226640160021731, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 8213524853172602538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8241086218373529843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,

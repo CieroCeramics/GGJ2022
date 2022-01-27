@@ -4,8 +4,10 @@ public class Tile : MonoBehaviour
 {
     //Properties
     //====================================================================================================================//
-    
-    public TILE_STATE CurrentState { get; private set; }
+
+    public virtual TILE_STATE CurrentState => currentState;
+
+    protected TILE_STATE currentState { get; private set; }
 
     [SerializeField]
     private TILE_STATE startingState;
@@ -27,15 +29,19 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        CurrentState = startingState;
+        Setup();
     }
 
     //====================================================================================================================//
 
+    protected virtual void Setup()
+    {
+        currentState = startingState;
+    }
 
     public virtual void ChangeState(TILE_STATE targetState, Material newMaterial)
     {
-        CurrentState = targetState;
+        currentState = targetState;
         Renderer.material = newMaterial;
     }
     

@@ -8,3 +8,12 @@ public interface IInteractWithTile
 
     void ExitTile(Tile tile);
 }
+
+public interface ICharacterEnter
+{
+    void CharacterEntered();
+}
+public interface ICharacterExit
+{
+    void CharacterExited();
+}
