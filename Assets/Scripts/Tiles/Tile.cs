@@ -6,8 +6,9 @@ public class Tile : MonoBehaviour
     //====================================================================================================================//
 
     public virtual TILE_STATE CurrentState => currentState;
-
     protected TILE_STATE currentState { get; private set; }
+
+    public Vector2Int coordinate;
 
     [SerializeField]
     private TILE_STATE startingState;
