@@ -9615,6 +9615,22 @@ MonoBehaviour:
       type: 3}
     count: 0
   my_texture: {fileID: 2800000, guid: a267de1ce568177429050bb0fa974dbe, type: 3}
+  GenericTileColor: {r: 0, g: 0, b: 0, a: 0}
+  FireCharTileColor: {r: 0, g: 0, b: 0, a: 0}
+  IceCharTileColor: {r: 0, g: 0, b: 0, a: 0}
+  RiverTileColor: {r: 0, g: 0, b: 0, a: 0}
+  BridgeTileColor: {r: 0, g: 0, b: 0, a: 0}
+  IcePortalTileColor: {r: 0, g: 0, b: 0, a: 0}
+  FirePortalTileColor: {r: 0, g: 0, b: 0, a: 0}
+  LavaTileColor: {r: 0, g: 0, b: 0, a: 0}
+  Floor_Prefab: {fileID: 0}
+  FireChar_Prefab: {fileID: 0}
+  IceChar_Prefab: {fileID: 0}
+  River_Prefab: {fileID: 0}
+  Bridge_Prefab: {fileID: 0}
+  Lava_Prefab: {fileID: 0}
+  IcePortal_Prefab: {fileID: 0}
+  FirePortal_Prefab: {fileID: 0}
 --- !u!1001 &777457980
 PrefabInstance:
   m_ObjectHideFlags: 0
