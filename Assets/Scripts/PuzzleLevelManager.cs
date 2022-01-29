@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class PuzzleLevelManager : MonoBehaviour
 {
+    public static Action OnVictory;
+    
+    [SerializeField]
+    private string puzzleName;
+    
     [SerializeField] 
     private Tile[] puzzleTiles;
 
@@ -55,7 +60,10 @@ public class PuzzleLevelManager : MonoBehaviour
 
     private void CheckForVictoryCondition()
     {
+        if (characterStands.Any(x => x.IsActive == false))
+            return;
         
+        OnVictory?.Invoke();
     }
 
     private void OnDeath(CharacterTileInteractionBase deadCharacter)

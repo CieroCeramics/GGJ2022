@@ -62,7 +62,7 @@ public class CharacterDestination : MonoBehaviour
                 break;
             //--------------------------------------------------------------------------------------------------------//
             case CHARACTER_TYPE.ICE when other.CompareTag(ICE_CHARACTER_TAG):
-                characterTileInteractionBase = other.GetComponent<FireCharacterTileInteractions>();
+                characterTileInteractionBase = other.GetComponent<IceCharacterTileInteractions>();
                 break;
             //--------------------------------------------------------------------------------------------------------//
             default:
