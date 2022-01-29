@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 9108876936061982073}
   - component: {fileID: 5316183640197438172}
   - component: {fileID: 7935931414860983830}
+  - component: {fileID: 2288842867808263662}
   m_Layer: 0
   m_Name: IcePortal
   m_TagString: Ice_Stand
@@ -114,6 +115,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2288842867808263662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8440568013547720643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c91203cb3f208be4f8d626ed1256b3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coordinate: {x: 0, y: 0}
+  startingState: 0
 --- !u!1001 &8783006853372640822
 PrefabInstance:
   m_ObjectHideFlags: 0
