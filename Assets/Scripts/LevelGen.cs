@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 public class LevelGen : MonoBehaviour
@@ -20,7 +19,7 @@ public class LevelGen : MonoBehaviour
     private ColorObjectData[] foundColorObjectData;
 
     public Texture2D my_texture;
-    /*public Color GenericTileColor;
+    public Color GenericTileColor;
     public Color FireCharTileColor;
     public Color IceCharTileColor;
     public Color RiverTileColor;
@@ -37,7 +36,7 @@ public class LevelGen : MonoBehaviour
     public GameObject Bridge_Prefab;
     public GameObject Lava_Prefab;
     public GameObject IcePortal_Prefab;
-    public GameObject FirePortal_Prefab;*/
+    public GameObject FirePortal_Prefab;
 
     [ContextMenu("My Function")]
     void SearchImage()
@@ -91,12 +90,12 @@ public class LevelGen : MonoBehaviour
                 if (objectLibrary.TryGetValue(foundColor, out var prefab) == false)
                     return;
 
-                Instantiate(prefab, new Vector3(i, prefab.transform.position.y, j), prefab.transform.rotation);
-                
+                var aTile = Instantiate(prefab, new Vector3(i, prefab.transform.position.y, j), prefab.transform.rotation);
+                aTile.GetComponent<Tile>().coordinate =new Vector2Int (i, j);
                 var test = objectCount[foundColor];
                 test.count++;
                 objectCount[foundColor] = test;
-
+                
 
                 /*if( my_texture.GetPixel(i,j) == GenericTileColor ){
                 Instantiate(Floor_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
@@ -138,12 +137,10 @@ public class LevelGen : MonoBehaviour
 
         }
 
-        var stringBuilder = new StringBuilder("<b>Build Count:</b>\n");
         foreach (var i in objectCount)
         {
-            stringBuilder.AppendLine($" {i.Value.name}: [{i.Value.count}]");
+            Debug.Log($"{i.Value.name}: {i.Value.count}");
         }
-        Debug.Log(stringBuilder.ToString());
     }
     // Start is called before the first frame update
     void Start()
