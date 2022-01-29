@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityTemplateProjects;
 
 public class PuzzleLevelManager : MonoBehaviour
 {
@@ -33,6 +34,14 @@ public class PuzzleLevelManager : MonoBehaviour
     private void Start()
     {
         SetupPuzzleTiles();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) == false)
+            return;
+        
+        GameManager.RestartLevel();
     }
 
     private void OnDisable()
