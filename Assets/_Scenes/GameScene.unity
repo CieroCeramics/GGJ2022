@@ -2052,6 +2052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzleLevelsPrefabs:
   - {fileID: 7712074981442626219, guid: 64855683d718c934d92a513720801efb, type: 3}
+  - {fileID: 3875026892545581425, guid: 0c19bebcd0e542b4d9c1a75bb261b32b, type: 3}
 --- !u!4 &1521334963
 Transform:
   m_ObjectHideFlags: 0

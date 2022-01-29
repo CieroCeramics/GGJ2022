@@ -75,9 +75,13 @@ public class PuzzleLevelManager : MonoBehaviour
     //====================================================================================================================//
     
 #if UNITY_EDITOR
-    [ContextMenu("Find All Level Objects")]
+    [ContextMenu("Generate & Setup Puzzle Level Manager")]
     private void FindAllLevelObjects()
     {
+        var generator = GetComponent<LevelGen>();
+        
+        generator.GenerateLevelData();
+
         puzzleTiles = FindObjectsOfType<Tile>();
         characters = FindObjectsOfType<CharacterTileInteractionBase>();
         characterStands = FindObjectsOfType<CharacterDestination>();

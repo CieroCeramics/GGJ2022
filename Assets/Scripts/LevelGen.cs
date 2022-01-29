@@ -25,9 +25,11 @@ public class LevelGen : MonoBehaviour
         public bool forceAddFloor;
         public bool isCharacter;
         public bool isInteractable;
-    }
 
-    //Properties
+        public Vector3 positionOffset;
+    }
+#if UNITY_EDITOR
+    //Editor Properties
     //====================================================================================================================//
     
     [SerializeField, Header("Generation Data")]
@@ -47,9 +49,24 @@ public class LevelGen : MonoBehaviour
 
     //Editor Functions
     //====================================================================================================================//
-#if UNITY_EDITOR
-    
 
+    public void GenerateLevelData()
+    {
+        ForceClean();
+        
+        if (my_texture == null)
+            throw new NullReferenceException();
+        
+        SearchImage();
+
+        if (foundColorObjectData == null || foundColorObjectData.Length == 0)
+            throw new ArgumentException();
+
+        GenLevel();
+    }
+
+    //====================================================================================================================//
+    
     [ContextMenu("My Function")]
     private void SearchImage()
     {
@@ -75,7 +92,36 @@ public class LevelGen : MonoBehaviour
             }
         }
 
-        foundColorObjectData = library.Values.ToArray();
+
+        //Only set list if its not been setup already
+        //--------------------------------------------------------------------------------------------------------//
+        
+        if (foundColorObjectData == null)
+        {
+            foundColorObjectData = library.Values.ToArray();
+            return;
+        }
+
+        //Go through scanned colors, looking for anything new
+        //--------------------------------------------------------------------------------------------------------//
+        var hasNewValues = false;
+        var currentValues = foundColorObjectData.ToList();
+        foreach (var kvp in library)
+        {
+            if (foundColorObjectData.Any(x => x.color == kvp.Key))
+                continue;
+            
+            currentValues.Add(kvp.Value);
+            hasNewValues = true;
+        }
+
+        //Save list data if something new was found
+        //--------------------------------------------------------------------------------------------------------//
+        
+        if (hasNewValues == false)
+            return;
+        
+        foundColorObjectData = currentValues.ToArray();
     }
     [ContextMenu("GenerateLevel")]
     private void GenLevel()
@@ -132,7 +178,8 @@ public class LevelGen : MonoBehaviour
                 
                 var prefab = colorObjectData.prefabObject;
                 
-                var objectInstance = InstantiatePrefab(prefab, new Vector3(x, prefab.transform.position.y, y),
+                var objectInstance = InstantiatePrefab(prefab, 
+                    new Vector3(x, prefab.transform.position.y, y) + colorObjectData.positionOffset,
                     prefab.transform.rotation);
                 objectInstance.name = $"{prefab.name}_[{x}, {y}]";
 
