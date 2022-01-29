@@ -22,7 +22,7 @@ public class PuzzleLevelManager : MonoBehaviour
     private void OnEnable()
     {
         CharacterTileInteractionBase.OnCharacterDied += OnDeath;
-        CharacterDestination.CharacterEnterStateChanged += on
+        CharacterDestination.CharacterEnterStateChanged += CheckForVictoryCondition;
     }
 
     private void Start()
@@ -32,7 +32,8 @@ public class PuzzleLevelManager : MonoBehaviour
 
     private void OnDisable()
     {
-        CharacterTileInteractionBase.OnCharacterDied += OnDeath;
+        CharacterTileInteractionBase.OnCharacterDied -= OnDeath;
+        CharacterDestination.CharacterEnterStateChanged -= CheckForVictoryCondition;
     }
 
     //PuzzleLevelManager Functions
