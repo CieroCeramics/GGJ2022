@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517462356243240911}
+  - component: {fileID: 9060425017162560114}
   - component: {fileID: 2495205765160687722}
   - component: {fileID: 379488903678667936}
-  - component: {fileID: 3808074862110074555}
+  - component: {fileID: 3034458061448550513}
   m_Layer: 0
   m_Name: Fire Portal
   m_TagString: Fire_Stand
@@ -34,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9060425017162560114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181091687723928949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f2a3e4e9421004ebbb76685da63320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expectedCharacter: 1
 --- !u!33 &2495205765160687722
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81,20 +95,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3808074862110074555
-MonoBehaviour:
+--- !u!65 &3034458061448550513
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2181091687723928949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91203cb3f208be4f8d626ed1256b3c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coordinate: {x: 0, y: 0}
-  startingState: 0
+  serializedVersion: 2
+  m_Size: {x: 1.499213, y: 0.9177742, z: 1.5931845}
+  m_Center: {x: -0.00096282363, y: 0, z: 0.002052188}
 --- !u!111 &1334651553979708624
 Animation:
   m_ObjectHideFlags: 0

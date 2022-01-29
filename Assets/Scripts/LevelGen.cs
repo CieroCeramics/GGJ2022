@@ -1,45 +1,57 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+
 using UnityEngine;
+using Object = UnityEngine.Object;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class LevelGen : MonoBehaviour
 {
+    //Structs
+    //====================================================================================================================//
+    
     [Serializable]
     public struct ColorObjectData
     {
         public string name;
         public Color color;
         public GameObject prefabObject;
-        public int count;
+
+        public bool forceAddFloor;
+        public bool isCharacter;
+        public bool isInteractable;
     }
 
+    //Properties
+    //====================================================================================================================//
+    
+    [SerializeField, Header("Generation Data")]
+    private Texture2D my_texture;
     [SerializeField] 
     private ColorObjectData[] foundColorObjectData;
 
-    public Texture2D my_texture;
-    public Color GenericTileColor;
-    public Color FireCharTileColor;
-    public Color IceCharTileColor;
-    public Color RiverTileColor;
-    public Color BridgeTileColor;
-    public Color IcePortalTileColor;
-    public Color FirePortalTileColor;
-    public Color LavaTileColor;
+    [SerializeField, Header("Parents")]
+    private Transform levelObjectsParent;
+    [SerializeField]
+    private Transform characterParent;
+    [SerializeField]
+    private Transform interactableObjectsParent;
+    
+    [SerializeField, Header("Misc")]
+    private GameObject floorTilePrefab;
 
-
-    public GameObject Floor_Prefab;
-    public GameObject FireChar_Prefab;
-    public GameObject IceChar_Prefab;
-    public GameObject River_Prefab;
-    public GameObject Bridge_Prefab;
-    public GameObject Lava_Prefab;
-    public GameObject IcePortal_Prefab;
-    public GameObject FirePortal_Prefab;
+    //Editor Functions
+    //====================================================================================================================//
+#if UNITY_EDITOR
+    
 
     [ContextMenu("My Function")]
-    void SearchImage()
+    private void SearchImage()
     {
         var library = new Dictionary<Color, ColorObjectData>();
 
@@ -52,7 +64,6 @@ public class LevelGen : MonoBehaviour
                 if (library.ContainsKey(foundColor))
                 {
                     var temp = library[foundColor];
-                    temp.count++;
                     library[foundColor] = temp;
                     continue;
                 }
@@ -60,7 +71,6 @@ public class LevelGen : MonoBehaviour
                 library.Add(foundColor, new ColorObjectData
                 {
                     color = foundColor,
-                    count = 1
                 });
             }
         }
@@ -68,87 +78,127 @@ public class LevelGen : MonoBehaviour
         foundColorObjectData = library.Values.ToArray();
     }
     [ContextMenu("GenerateLevel")]
-    void GenLevel()
+    private void GenLevel()
     {
-        var objectLibrary = new Dictionary<Color, GameObject>();
+
+        //--------------------------------------------------------------------------------------------------------//
+        
+        GameObject InstantiatePrefab(Object somePrefab, Vector3 position, Quaternion rotation)
+        {
+            // Get the Path to Prefab
+            var prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(somePrefab);
+         
+            // Load Prefab Asset as Object from path
+            var newObject = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(Object));
+         
+            //Instantiate the Prefab in the scene, as a child of the GO this script runs on
+            var newPrefab = (GameObject)PrefabUtility.InstantiatePrefab(newObject, null);
+            newPrefab.transform.position = position;
+            newPrefab.transform.rotation = rotation;
+            
+            return newPrefab;
+        }
+
+        //--------------------------------------------------------------------------------------------------------//
+        
+        var objectLibrary = new Dictionary<Color, LevelGen.ColorObjectData>();
         var objectCount = new Dictionary<Color, (string name, int count)>();
 
         foreach (var colorData in foundColorObjectData)
         {
-            objectLibrary.Add(colorData.color, colorData.prefabObject);
+            objectLibrary.Add(colorData.color, colorData);
             objectCount.Add(colorData.color, (colorData.name, 0));
         }
 
         //--------------------------------------------------------------------------------------------------------//
         
-        for (int i = 0; i < my_texture.width; i++)
+        for (int x = 0; x < my_texture.width; x++)
         {
-            for (int j = 0; j < my_texture.height; j++)
+            for (int y = 0; y < my_texture.height; y++)
             {
-                var foundColor = my_texture.GetPixel(i, j);
+                var foundColor = my_texture.GetPixel(x, y);
 
-                if (objectLibrary.TryGetValue(foundColor, out var prefab) == false)
-                    return;
-
-                var aTile = Instantiate(prefab, new Vector3(i, prefab.transform.position.y, j), prefab.transform.rotation);
-                aTile.GetComponent<Tile>().coordinate =new Vector2Int (i, j);
+                //Debug Count
+                //--------------------------------------------------------------------------------------------------------//
+                
                 var test = objectCount[foundColor];
                 test.count++;
                 objectCount[foundColor] = test;
+
+                //--------------------------------------------------------------------------------------------------------//
                 
-
-                /*if( my_texture.GetPixel(i,j) == GenericTileColor ){
-                Instantiate(Floor_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                }
-
-                else if( my_texture.GetPixel(i,j) == FireCharTileColor ){
-                Instantiate(Floor_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                Instantiate(FireChar_Prefab, new Vector3(i, 0, j),  Quaternion.identity);
-                }
-
-                   else if( my_texture.GetPixel(i,j) == IceCharTileColor ){
-                Instantiate(Floor_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                Instantiate(IceChar_Prefab, new Vector3(i, 0, j),  Quaternion.identity);
-                }
-
-
-                  else if( my_texture.GetPixel(i,j) == RiverTileColor ){
-                Instantiate(River_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                }
-
-
-                   else if( my_texture.GetPixel(i,j) == BridgeTileColor ){
-                Instantiate(Bridge_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                }
-
-
-                else if( my_texture.GetPixel(i,j) == IcePortalTileColor ){
-                Instantiate(IcePortal_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                }
-
-
-                  else if( my_texture.GetPixel(i,j) == FirePortalTileColor ){
-                Instantiate(FirePortal_Prefab, new Vector3(i, 0, j),  Quaternion.Euler(new Vector3(90, 0, 0)));
-                  }
+                if (objectLibrary.TryGetValue(foundColor, out var colorObjectData) == false)
+                    return;
                 
-                  else if( my_texture.GetPixel(i,j) == LavaTileColor ){
-                Instantiate(Lava_Prefab, new Vector3(i, 0.5f, j),  Quaternion.Euler(new Vector3(90, 0, 0)));*/
+                var prefab = colorObjectData.prefabObject;
+                
+                var objectInstance = InstantiatePrefab(prefab, new Vector3(x, prefab.transform.position.y, y),
+                    prefab.transform.rotation);
+                objectInstance.name = $"{prefab.name}_[{x}, {y}]";
+
+                if (colorObjectData.forceAddFloor)
+                {
+                    var floorInstance = InstantiatePrefab(floorTilePrefab, new Vector3(x, floorTilePrefab.transform.position.y, y),
+                        floorTilePrefab.transform.rotation);
+                    floorInstance.name = $"FORCED_{floorTilePrefab.name}_[{x}, {y}]";
+                    floorInstance.GetComponent<Tile>().coordinate = new Vector2Int (x, y);
+                    floorInstance.transform.SetParent(levelObjectsParent, true);
+                }
+
+                if (colorObjectData.isCharacter)
+                {
+                    objectInstance.transform.SetParent(characterParent, true);
+                    continue;
+                }
+
+                if (colorObjectData.isInteractable)
+                {
+                    objectInstance.transform.SetParent(interactableObjectsParent, true);
+                    continue;
+                }
+
+                var tile = objectInstance.GetComponent<Tile>();
+
+                if (tile == null)
+                    continue;
+                
+                objectInstance.transform.SetParent(levelObjectsParent, true);
+                tile.coordinate = new Vector2Int (x, y);
             }
 
         }
 
+        var sb = new StringBuilder("<b>Generated Objects:</b>\n");
         foreach (var i in objectCount)
         {
-            Debug.Log($"{i.Value.name}: {i.Value.count}");
+            sb.AppendLine($"   {i.Value.name}: {i.Value.count}");
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        //--------------------------------------------------------------------------------------------------------//
         
-
+        Debug.Log(sb.ToString());
     }
+
+    [ContextMenu("FORCE CLEAN ALL OBJECTS")]
+    private void ForceClean()
+    {
+        void DestroyChildren(params Transform[] targetTransforms)
+        {
+            foreach (var targetTransform in targetTransforms)
+            {
+                var count = targetTransform.childCount;
+
+                for (int i = count - 1; i >= 0; i--)
+                {
+                    DestroyImmediate(targetTransform.GetChild(i).gameObject);
+                }
+            }
+            
+        }
+
+        DestroyChildren(levelObjectsParent, characterParent, interactableObjectsParent);
+    }
+    
+#endif
+    //====================================================================================================================//
+    
 
 }

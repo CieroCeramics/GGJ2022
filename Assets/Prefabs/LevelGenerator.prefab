@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &704632599542434738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2838842412584986312}
+  - component: {fileID: 1502031874968419770}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2838842412584986312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704632599542434738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502031874968419770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704632599542434738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f6da67dea675c44b72a13c6fc536d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  my_texture: {fileID: 2800000, guid: a267de1ce568177429050bb0fa974dbe, type: 3}
+  foundColorObjectData:
+  - name: Floor
+    color: {r: 1, g: 1, b: 1, a: 1}
+    prefabObject: {fileID: 1724675553861444820, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
+      type: 3}
+    forceAddFloor: 0
+    isCharacter: 0
+    isInteractable: 0
+  - name: Ice Character
+    color: {r: 0, g: 0, b: 1, a: 1}
+    prefabObject: {fileID: 8911845712452648714, guid: 0a7ab0e7b72b7d846b25f2e6c0bbaa29,
+      type: 3}
+    forceAddFloor: 1
+    isCharacter: 1
+    isInteractable: 0
+  - name: Fire Portal
+    color: {r: 1, g: 0, b: 0.87058824, a: 1}
+    prefabObject: {fileID: 2181091687723928949, guid: 2ee19a4678a822b439a692ff27705f99,
+      type: 3}
+    forceAddFloor: 1
+    isCharacter: 0
+    isInteractable: 1
+  - name: Pillar
+    color: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
+    prefabObject: {fileID: 2811436336168189300, guid: 025ccfb7d11612147a0a300195a4ee80,
+      type: 3}
+    forceAddFloor: 0
+    isCharacter: 0
+    isInteractable: 0
+  - name: Water Tile
+    color: {r: 0.011764706, g: 0, b: 0.5254902, a: 1}
+    prefabObject: {fileID: 642226640160021731, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
+      type: 3}
+    forceAddFloor: 0
+    isCharacter: 0
+    isInteractable: 0
+  - name: Bridge
+    color: {r: 0.59607846, g: 0.34509805, b: 0.24705882, a: 1}
+    prefabObject: {fileID: 8725135954403514953, guid: e7dcaa94e2a1a8648b5e322232fea1a8,
+      type: 3}
+    forceAddFloor: 0
+    isCharacter: 0
+    isInteractable: 0
+  - name: Ice Portal
+    color: {r: 0, g: 1, b: 1, a: 1}
+    prefabObject: {fileID: 8440568013547720643, guid: 7c1dc2e55843f0549909c2056a11ba49,
+      type: 3}
+    forceAddFloor: 1
+    isCharacter: 0
+    isInteractable: 1
+  - name: Fire Character
+    color: {r: 1, g: 0, b: 0, a: 1}
+    prefabObject: {fileID: 4505692593081765185, guid: 54715dde4405b76488f2b4d71f351c1b,
+      type: 3}
+    forceAddFloor: 1
+    isCharacter: 1
+    isInteractable: 0
+  levelObjectsParent: {fileID: 0}
+  characterParent: {fileID: 0}
+  interactableObjectsParent: {fileID: 0}
+  floorTilePrefab: {fileID: 1724675553861444820, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
+    type: 3}

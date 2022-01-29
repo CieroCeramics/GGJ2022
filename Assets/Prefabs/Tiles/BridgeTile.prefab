@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428394495376637268}
-  m_Mesh: {fileID: 674340280032488212, guid: 47aaef84ec92e264386242d3a57fd412, type: 3}
+  m_Mesh: {fileID: 674340280032488212, guid: a0b9ebb02c129c342b01966362e65a55, type: 3}
 --- !u!23 &8941344141536369793
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548eed481e82ac5479500ca12d68c9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coordinate: {x: 0, y: 0}
   startingState: 3
   bridgeRenderer: {fileID: 8941344141536369793}
   startingBridgeState: 0
