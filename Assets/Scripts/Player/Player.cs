@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Properties
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
 
     private GameObject _currentTileObject;
     private Tile _currentTile;
+    private Rect _movementRect;
 
     //Unity Functions
     //====================================================================================================================//
@@ -31,6 +33,8 @@ public class Player : MonoBehaviour
 
         _playerInput = GetComponent<IMove>();
         _playerInteractWithTiles = GetComponent<IInteractWithTile>();
+
+        _movementRect = FindObjectOfType<PuzzleLevelManager>().MovementBounds;
     }
 
     // Update is called once per frame
@@ -41,13 +45,29 @@ public class Player : MonoBehaviour
         ProcessTileCollisions();
     }
 
+    private void FixedUpdate()
+    {
+        var currentPosition = rigidBody.position;
+        currentPosition.x = Mathf.Clamp(currentPosition.x, _movementRect.min.x, _movementRect.max.x);
+        currentPosition.z = Mathf.Clamp(currentPosition.z, _movementRect.min.y, _movementRect.max.y);
+
+        if (currentPosition.y < -5)
+        {
+            if(_playerInteractWithTiles is CharacterTileInteractionBase characterTileInteractionBase)
+                characterTileInteractionBase.ForceKill();
+            return;
+        }
+
+        rigidBody.position = currentPosition;
+    }
+
     //====================================================================================================================//
 
 
 
     private void ProcessTileCollisions()
     {
-        ProcessHitObject(Physics.Raycast(transform.position, -Vector3.up, out var hit, raycastLayer.value)
+        ProcessHitObject(Physics.Raycast(transform.position, Vector3.down * 1.5f, out var hit, raycastLayer.value)
             ? hit.collider.gameObject
             : null);
     }
