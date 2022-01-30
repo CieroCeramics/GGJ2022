@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 9118744052980932195}
   - component: {fileID: 3007402391992501864}
   - component: {fileID: 1939632651165443983}
-  - component: {fileID: 3473365605048005548}
+  - component: {fileID: 2074610358842211151}
   m_Layer: 0
   m_Name: FireCharacterPrefab
   m_TagString: RedGuy
@@ -358,7 +358,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &3473365605048005548
+--- !u!95 &2074610358842211151
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ Animator:
   m_GameObject: {fileID: 5129333521392429421}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3e78f3c855da62444b118b7eb3f4d567, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9d28f6c4e2276624cb5e6d87b6fc4812, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

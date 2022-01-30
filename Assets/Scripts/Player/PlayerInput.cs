@@ -10,7 +10,11 @@ public class PlayerInput : MonoBehaviour, IMove
     [SerializeField] private KeyCode backwardInput;
     [SerializeField] private KeyCode leftInput;
     [SerializeField] private KeyCode rightInput;
-
+    private Animator animator;
+    private void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
     public Rigidbody Rigidbody
     {
         get
@@ -39,12 +43,14 @@ public class PlayerInput : MonoBehaviour, IMove
         {
             currentVelocity.z = moveSpeed;
             targetRotation = Quaternion.identity;
+         //  animator.SetBool("Walking", true);
         }
         //Down movement
         else if (Input.GetKey(backwardInput))
         {
             currentVelocity.z = -moveSpeed;
             targetRotation = Quaternion.Euler(0, 180, 0);
+           // animator.SetBool("Walking", true);
         }
 
 //Left movement
@@ -52,13 +58,49 @@ public class PlayerInput : MonoBehaviour, IMove
         {
             currentVelocity.x = -moveSpeed;
             targetRotation = Quaternion.Euler(0, 270, 0);
+            //animator.SetBool("Walking", true);
         }
+
         //Right movement
         else if (Input.GetKey(rightInput))
         {
             currentVelocity.x = moveSpeed;
             targetRotation = Quaternion.Euler(0, 90, 0);
+            //animator.SetBool("Walking", true);
         }
+
+
+
+
+       if (Input.GetKeyDown(forwardInput))
+        {
+            animator.SetBool("Walking", true);
+        }
+        //Down movement
+        else if (Input.GetKeyDown(backwardInput))
+        {
+
+            animator.SetBool("Walking", true);
+        }
+         if (Input.GetKeyDown(leftInput))
+        {
+
+            animator.SetBool("Walking", true);
+        }
+        if (Input.GetKeyDown(rightInput))
+        {
+            animator.SetBool("Walking", true);
+        }
+        else if (Input.GetKeyUp(rightInput) || Input.GetKeyUp(leftInput) || Input.GetKeyUp(forwardInput)|| Input.GetKeyUp(backwardInput) )
+        {
+
+            animator.SetBool("Walking", false);
+
+           // Debug.Log("stop");
+        }
+
+
+
 
         Rigidbody.velocity = currentVelocity;
         transform.rotation = targetRotation;
