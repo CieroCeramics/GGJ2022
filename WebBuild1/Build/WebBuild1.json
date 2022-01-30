@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "GGJ2022",
+"productVersion": "0.1",
+"dataUrl": "WebBuild1.data.unityweb",
+"wasmCodeUrl": "WebBuild1.wasm.code.unityweb",
+"wasmFrameworkUrl": "WebBuild1.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.1f1"
+}
