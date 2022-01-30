@@ -8,6 +8,7 @@ public class FireCharacterTileInteractions : CharacterTileInteractionBase
         {
             case TILE_STATE.DEFAULT:
                 tile.ChangeState(TILE_STATE.FIRE, trailMaterial);
+                audioSrc.PlayOneShot(walkSound);
                 break;
             case TILE_STATE.FIRE:
                 return;

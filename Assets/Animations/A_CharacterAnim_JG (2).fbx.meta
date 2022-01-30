@@ -1,8 +1,17 @@
 fileFormatVersion: 2
-guid: f5061da130cabad42b02bd529cf8d98c
+guid: a6acb140278e94b429f9bc79547bef5e
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -7939422232465117443
+    second: WalkCycle
+  - first:
+      74: -7628444586109531162
+    second: IceIdle
+  - first:
+      74: 4871491192211529056
+    second: FireIdle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -34,7 +43,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.009
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -59,7 +68,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -81,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.009
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

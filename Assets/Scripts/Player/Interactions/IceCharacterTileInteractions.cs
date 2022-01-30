@@ -13,6 +13,7 @@ public class IceCharacterTileInteractions : CharacterTileInteractionBase
             case TILE_STATE.DEFAULT:
             case TILE_STATE.WATER:
                 tile.ChangeState(TILE_STATE.ICE, trailMaterial);
+                audioSrc.PlayOneShot(walkSound);
                 break;
             case TILE_STATE.FIRE:
                 //TODO Dead

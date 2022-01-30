@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 679315854577748483, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
         type: 3}
       propertyPath: startingState
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 932169494835070209, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
         type: 3}
@@ -21,12 +21,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 5561349426305759274, guid: 7809ed2b1520b7c46a757d6808281adc,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: a03dd2510d8e240438a1f6d562f5a779, type: 2}
     - target: {fileID: 1724675553861444820, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
         type: 3}
       propertyPath: m_Name
-      value: Water Tile (1)
+      value: LavaTile
       objectReference: {fileID: 0}
     - target: {fileID: 1724675553861444820, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
         type: 3}
@@ -36,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 1724675553861444820, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
         type: 3}
       propertyPath: m_TagString
-      value: Water
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 2063941568406388334, guid: 9c8ee3cf62901f0479e817c9b9b3581c,
         type: 3}

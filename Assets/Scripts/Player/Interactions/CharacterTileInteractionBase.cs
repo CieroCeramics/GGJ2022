@@ -9,7 +9,13 @@ public abstract class CharacterTileInteractionBase : MonoBehaviour, IInteractWit
     [SerializeField, Header("Trail Effects")]
     //Can the player move
     protected Material trailMaterial;
+[SerializeField, Header("Trail Effects")]
+    //Can the player move
+    protected AudioSource audioSrc;
 
+[SerializeField, Header("Trail Effects")]
+    //Can the player move
+    protected AudioClip walkSound;
     //IInteractWithTile Functions
     //====================================================================================================================//
 
