@@ -61,7 +61,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0650406, y: 1}
+    m_SensorSize: {x: 2.0508022, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3591,6 +3591,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IcePortal_[6, 1]
       objectReference: {fileID: 0}
+    - target: {fileID: 8783006853219449953, guid: 7c1dc2e55843f0549909c2056a11ba49,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3599,12 +3604,12 @@ PrefabInstance:
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.986292
+      value: -2.736
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.692103
+      value: -8.192
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
@@ -15014,6 +15019,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1608332908670468682}
     m_Modifications:
+    - target: {fileID: 1334651553979708630, guid: 2ee19a4678a822b439a692ff27705f99,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1517462356243240911, guid: 2ee19a4678a822b439a692ff27705f99,
         type: 3}
       propertyPath: m_LocalPosition.x
