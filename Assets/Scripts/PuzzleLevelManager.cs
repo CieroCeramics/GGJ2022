@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using UnityTemplateProjects;
 
@@ -11,6 +12,9 @@ public class PuzzleLevelManager : MonoBehaviour
     
     [SerializeField]
     private string puzzleName;
+
+    [SerializeField]
+    private CinemachineTargetGroup cinemachineTargetGroup;
     
     [SerializeField] 
     private Tile[] puzzleTiles;
@@ -65,6 +69,13 @@ public class PuzzleLevelManager : MonoBehaviour
             
             PuzzleTiles.Add(puzzleTiles[i].coordinate, puzzleTiles[i]);
         }
+        
+        cinemachineTargetGroup.m_Targets = characters.Select(x => new CinemachineTargetGroup.Target
+        {
+            radius = 0.5f,
+            target = x.transform,
+            weight = 1f
+        }).ToArray();
     }
 
     private void CheckForVictoryCondition()

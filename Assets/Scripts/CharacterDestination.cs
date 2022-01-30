@@ -66,7 +66,7 @@ public class CharacterDestination : MonoBehaviour
                 break;
             //--------------------------------------------------------------------------------------------------------//
             default:
-                throw new ArgumentOutOfRangeException();
+                return;
         }
 
         if (characterTileInteractionBase == null)
