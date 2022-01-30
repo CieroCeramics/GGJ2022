@@ -74,6 +74,11 @@ public class RiverStartTile : Tile
                 isInterrupted = true;
                 continue;
             }
+
+#if UNITY_EDITOR
+            DrawDebugArrow(flowTile.transform.position, isInterrupted ? Color.red : Color.green);
+#endif
+            
             
             flowTile.ChangeState(isInterrupted ? TILE_STATE.DEFAULT : TILE_STATE.WATER, 
                 isInterrupted ? defaultMaterial : waterMaterial);
@@ -84,6 +89,13 @@ public class RiverStartTile : Tile
     //====================================================================================================================//
     
 #if UNITY_EDITOR
+
+    private void DrawDebugArrow(in Vector3 position, in Color color)
+    {
+        var pos = position + new Vector3(0.5f, 0.05f,-0.5f);
+        var direction = flowDirection.DirectionAsDirectionVector3();
+        DrawArrow.ForDebug(pos + -direction/2f, direction * 0.5f, color);
+    }
 
     private void OnDrawGizmos()
     {

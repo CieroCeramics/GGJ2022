@@ -25,6 +25,8 @@ public abstract class CharacterTileInteractionBase : MonoBehaviour, IInteractWit
         
     }
 
+    public void ForceKill() => DestroyCharacter("Mysterious Forces");
+
     //====================================================================================================================//
 
 }

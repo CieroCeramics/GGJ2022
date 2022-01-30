@@ -26,6 +26,8 @@ public class PuzzleLevelManager : MonoBehaviour
 
     public Dictionary<Vector2Int, Tile> PuzzleTiles { get; private set; }
 
+    public Rect MovementBounds { get; private set; }
+
     //Unity Functions
     //====================================================================================================================//
 
@@ -35,6 +37,7 @@ public class PuzzleLevelManager : MonoBehaviour
         CharacterDestination.CharacterEnterStateChanged += CheckForVictoryCondition;
         
         SetupPuzzleTiles();
+        MovementBounds = GetMovementBounds();
     }
 
     private void Update()
@@ -86,6 +89,23 @@ public class PuzzleLevelManager : MonoBehaviour
     private void OnDeath(CharacterTileInteractionBase deadCharacter)
     {
         
+    }
+
+    private Rect GetMovementBounds()
+    {
+        var coordinates = PuzzleTiles.Keys.ToList();
+
+        var minX = coordinates.Min(x => x.x);
+        var minY = coordinates.Min(x => x.y - 1);
+        
+        var maxX = coordinates.Max(x => x.x +1);
+        var maxY = coordinates.Max(x => x.y);
+
+        return new Rect
+        {
+            min = new Vector2(minX, minY),
+            max = new Vector2(maxX, maxY)
+        };
     }
 
     //Unity Editor Functions
