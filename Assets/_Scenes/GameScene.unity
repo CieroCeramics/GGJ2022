@@ -858,7 +858,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476640511}
-  m_LocalRotation: {x: 0.47185802, y: 0.000000015170428, z: -0.000000008118969, w: 0.8816746}
+  m_LocalRotation: {x: 0.47185802, y: -0.000000015170428, z: 0.000000008118969, w: 0.8816746}
   m_LocalPosition: {x: 0, y: 0.83204937, z: -0.5547018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2213,7 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLevelsPrefabs:
-  - {fileID: 7712074981442626219, guid: 64855683d718c934d92a513720801efb, type: 3}
+  - {fileID: 1893101478744776423, guid: d37ecfed88d7ea24391c9fe96e90a693, type: 3}
   - {fileID: 4345872425290099899, guid: 0be802516cd60de4c8439503e49bb7ff, type: 3}
   - {fileID: 1253283866791548797, guid: f3082d03190f43e4cb936f9f6859d80f, type: 3}
   - {fileID: 8260151524125463830, guid: 42c3dd5ca8c74eb46892e5733c082955, type: 3}
@@ -3908,7 +3908,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2716599799297576660}
-  m_LocalRotation: {x: 0.47185802, y: 0.000000015170428, z: -0.000000008118969, w: 0.8816746}
+  m_LocalRotation: {x: 0.47185802, y: -0.000000015170428, z: 0.000000008118969, w: 0.8816746}
   m_LocalPosition: {x: 0, y: 15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
