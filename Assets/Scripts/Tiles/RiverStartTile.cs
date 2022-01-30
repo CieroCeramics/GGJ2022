@@ -79,9 +79,10 @@ public class RiverStartTile : Tile
             DrawDebugArrow(flowTile.transform.position, isInterrupted ? Color.red : Color.green);
 #endif
             
-            
-            flowTile.ChangeState(isInterrupted ? TILE_STATE.DEFAULT : TILE_STATE.WATER, 
-                isInterrupted ? defaultMaterial : waterMaterial);
+            if(flowTile.CurrentState == TILE_STATE.WATER && isInterrupted)
+                flowTile.ChangeState(TILE_STATE.DEFAULT, defaultMaterial);
+            else if(flowTile.CurrentState != TILE_STATE.WATER && isInterrupted == false)
+                flowTile.ChangeState(TILE_STATE.WATER, waterMaterial);
         }
     }
     

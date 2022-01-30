@@ -50,6 +50,17 @@ public class LevelGen : MonoBehaviour
     //Editor Functions
     //====================================================================================================================//
 
+    private static Color RoundColor(Color color, in int decimalPlace)
+    {
+        return new Color
+        {
+            r = (float)Math.Round(color.r, decimalPlace),
+            g = (float)Math.Round(color.g, decimalPlace),
+            b = (float)Math.Round(color.b, decimalPlace),
+            a = 1f
+        };
+    }
+    
     public void GenerateLevelData()
     {
         ForceClean();
@@ -76,7 +87,7 @@ public class LevelGen : MonoBehaviour
         {
             for (int y = 0; y < my_texture.height; y++)
             {
-                var foundColor = my_texture.GetPixel(x, y);
+                var foundColor = RoundColor(my_texture.GetPixel(x, y), 2);
 
                 if (library.ContainsKey(foundColor))
                 {
@@ -128,6 +139,8 @@ public class LevelGen : MonoBehaviour
     {
 
         //--------------------------------------------------------------------------------------------------------//
+
+        
         
         GameObject InstantiatePrefab(Object somePrefab, Vector3 position, Quaternion rotation)
         {
@@ -147,13 +160,13 @@ public class LevelGen : MonoBehaviour
 
         //--------------------------------------------------------------------------------------------------------//
         
-        var objectLibrary = new Dictionary<Color, LevelGen.ColorObjectData>();
-        var objectCount = new Dictionary<Color, (string name, int count)>();
+        var objectLibrary = new Dictionary<Color, ColorObjectData>();
+        //var objectCount = new Dictionary<Color, (string name, int count)>();
 
         foreach (var colorData in foundColorObjectData)
         {
-            objectLibrary.Add(colorData.color, colorData);
-            objectCount.Add(colorData.color, (colorData.name, 0));
+            objectLibrary.Add(RoundColor(colorData.color, 2), colorData);
+            //objectCount.Add(colorData.color, (colorData.name, 0));
         }
 
         //--------------------------------------------------------------------------------------------------------//
@@ -162,19 +175,19 @@ public class LevelGen : MonoBehaviour
         {
             for (int y = 0; y < my_texture.height; y++)
             {
-                var foundColor = my_texture.GetPixel(x, y);
+                var foundColor = RoundColor(my_texture.GetPixel(x, y), 2);
 
                 //Debug Count
                 //--------------------------------------------------------------------------------------------------------//
                 
-                var test = objectCount[foundColor];
+                /*var test = objectCount[foundColor];
                 test.count++;
-                objectCount[foundColor] = test;
+                objectCount[foundColor] = test;*/
 
                 //--------------------------------------------------------------------------------------------------------//
-                
+
                 if (objectLibrary.TryGetValue(foundColor, out var colorObjectData) == false)
-                    return;
+                    continue;
                 
                 var prefab = colorObjectData.prefabObject;
                 
@@ -215,13 +228,13 @@ public class LevelGen : MonoBehaviour
 
         }
 
-        var sb = new StringBuilder("<b>Generated Objects:</b>\n");
+        /*var sb = new StringBuilder("<b>Generated Objects:</b>\n");
         foreach (var i in objectCount)
         {
             sb.AppendLine($"   {i.Value.name}: {i.Value.count}");
         }
         
-        Debug.Log(sb.ToString());
+        Debug.Log(sb.ToString());*/
     }
 
     [ContextMenu("FORCE CLEAN ALL OBJECTS")]
