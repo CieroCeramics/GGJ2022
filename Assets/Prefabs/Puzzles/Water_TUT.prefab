@@ -451,7 +451,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0508022, y: 1}
+    m_SensorSize: {x: 0.3647587, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1588,8 +1588,8 @@ MonoBehaviour:
   coordinate: {x: 0, y: 0}
   startingState: 3
   flowDirection: 4
-  defaultMaterial: {fileID: 0}
-  waterMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: be16a78a8bdd03649b37d04e0e636830, type: 2}
+  waterMaterial: {fileID: 2100000, guid: 7152e3ec06c5ff74d966f4442539fddc, type: 2}
 --- !u!114 &1372112691688400690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1606,8 +1606,8 @@ MonoBehaviour:
   coordinate: {x: 0, y: 0}
   startingState: 3
   flowDirection: 4
-  defaultMaterial: {fileID: 0}
-  waterMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: be16a78a8bdd03649b37d04e0e636830, type: 2}
+  waterMaterial: {fileID: 2100000, guid: 7152e3ec06c5ff74d966f4442539fddc, type: 2}
 --- !u!114 &8609966068207295151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,12 +1620,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e87ba164c5f054a816431b20395bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interruptsRiver: 1
+  interruptsRiver: 0
   coordinate: {x: 0, y: 0}
   startingState: 3
   flowDirection: 4
-  defaultMaterial: {fileID: 0}
-  waterMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: be16a78a8bdd03649b37d04e0e636830, type: 2}
+  waterMaterial: {fileID: 2100000, guid: 7152e3ec06c5ff74d966f4442539fddc, type: 2}
 --- !u!1001 &8400897106182192461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4238,6 +4238,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3001332693486837490}
     m_Modifications:
+    - target: {fileID: 1334651553979708630, guid: 2ee19a4678a822b439a692ff27705f99,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1517462356243240911, guid: 2ee19a4678a822b439a692ff27705f99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8859,6 +8864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IcePortal_[11, 8]
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783006853219449953, guid: 7c1dc2e55843f0549909c2056a11ba49,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
