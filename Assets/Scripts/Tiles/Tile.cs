@@ -8,6 +8,11 @@ public class Tile : MonoBehaviour
     public virtual TILE_STATE CurrentState => currentState;
     protected TILE_STATE currentState { get; private set; }
 
+    public virtual bool InterruptsRiver => interruptsRiver;
+
+    [SerializeField]
+    private bool interruptsRiver;
+    
     public Vector2Int coordinate;
 
     [SerializeField]

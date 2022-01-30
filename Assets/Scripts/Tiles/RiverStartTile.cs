@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
+using Utilities.Extensions;
 
 public class RiverStartTile : Tile
 {
@@ -15,12 +17,22 @@ public class RiverStartTile : Tile
         FORWARD,
         BACKWARD
     }
-
+//====================================================================================================================//
     [SerializeField]
     private DIRECTION flowDirection;
 
+    [SerializeField]
+    private Material defaultMaterial;
+    [SerializeField]
+    private Material waterMaterial;
+
+    private Tile[] _flowTiles;
+
     public override TILE_STATE CurrentState => TILE_STATE.WATER;
     private float _flowUpdateTimer;
+    
+    //Unity Functions
+    //====================================================================================================================//
     
     private void Update()
     {
@@ -33,37 +45,55 @@ public class RiverStartTile : Tile
         CalculateFlow();
     }
     
+    //====================================================================================================================//
+    
+    protected override void Setup()
+    {
+        Assert.IsNotNull(defaultMaterial);
+        Assert.IsNotNull(waterMaterial);
+        
+        base.Setup();
+
+        var puzzleLevelManager = FindObjectOfType<PuzzleLevelManager>();
+        _flowTiles = puzzleLevelManager.PuzzleTiles.GetAllTilesInDirectionFrom(coordinate, flowDirection).Values.ToArray();
+    }
 
     public override void ChangeState(TILE_STATE targetState, Material newMaterial)
     {
         
     }
-
-
-
+    
     private void CalculateFlow()
     {
-        //TODO From this position, flow through all tiles in DIRECTION until interrupted
-        throw new NotImplementedException();
-    }
-}
+        bool isInterrupted = false;
 
-public static class DIRECTIONExtensions
-{
-    public static Vector2Int DirectionAsDirectionVector(this RiverStartTile.DIRECTION direction)
-    {
-        switch (direction)
+        foreach (var flowTile in _flowTiles)
         {
-            case RiverStartTile.DIRECTION.LEFT:
-                return Vector2Int.left;
-            case RiverStartTile.DIRECTION.RIGHT:
-                return Vector2Int.right;
-            case RiverStartTile.DIRECTION.FORWARD:
-                return Vector2Int.up;
-            case RiverStartTile.DIRECTION.BACKWARD:
-                return Vector2Int.down;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+            if (flowTile.InterruptsRiver || flowTile.CurrentState == TILE_STATE.ICE)
+            {
+                isInterrupted = true;
+                continue;
+            }
+            
+            flowTile.ChangeState(isInterrupted ? TILE_STATE.DEFAULT : TILE_STATE.WATER, 
+                isInterrupted ? defaultMaterial : waterMaterial);
         }
     }
+    
+    //Editor Functions
+    //====================================================================================================================//
+    
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        var pos = transform.position + new Vector3(0.5f, 0.05f,-0.5f);
+        var direction = flowDirection.DirectionAsDirectionVector3();
+        Gizmos.color = Color.red;
+        DrawArrow.ForGizmo(pos + -direction/2f, direction * 0.5f);
+    }
+
+#endif
 }
+
+

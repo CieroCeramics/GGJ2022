@@ -33,10 +33,7 @@ public class PuzzleLevelManager : MonoBehaviour
     {
         CharacterTileInteractionBase.OnCharacterDied += OnDeath;
         CharacterDestination.CharacterEnterStateChanged += CheckForVictoryCondition;
-    }
-
-    private void Start()
-    {
+        
         SetupPuzzleTiles();
     }
 
@@ -95,13 +92,19 @@ public class PuzzleLevelManager : MonoBehaviour
     //====================================================================================================================//
     
 #if UNITY_EDITOR
-    [ContextMenu("Generate & Setup Puzzle Level Manager")]
-    private void FindAllLevelObjects()
+    [ContextMenu("Generate and Setup Puzzle")]
+    private void GenerateSetupLevel()
     {
         var generator = GetComponent<LevelGen>();
         
         generator.GenerateLevelData();
 
+        FindAllLevelObjects();
+    }
+    
+    [ContextMenu("Find All Objects")]
+    private void FindAllLevelObjects()
+    {
         puzzleTiles = FindObjectsOfType<Tile>();
         characters = FindObjectsOfType<CharacterTileInteractionBase>();
         characterStands = FindObjectsOfType<CharacterDestination>();

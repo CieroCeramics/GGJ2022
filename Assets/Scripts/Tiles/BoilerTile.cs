@@ -6,7 +6,9 @@ public class BoilerTile : Tile, ICharacterExit
 {
     [Serializable]
     public class BoilerEvent : UnityEvent<bool> { }
-    
+
+    public override bool InterruptsRiver => !isActive;
+
     [SerializeField]
     private bool isActive;
     
@@ -21,10 +23,11 @@ public class BoilerTile : Tile, ICharacterExit
                 TrySetIsActive(true);
                 break;
             case TILE_STATE.DEFAULT:
-            case TILE_STATE.ICE:
-            case TILE_STATE.WATER:
                 TrySetIsActive(false);
                 break;
+            case TILE_STATE.ICE:
+                case TILE_STATE.WATER:
+                return;
             default:
                 throw new ArgumentOutOfRangeException(nameof(targetState), targetState, null);
         }
