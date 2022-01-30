@@ -2547,7 +2547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f6da67dea675c44b72a13c6fc536d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  my_texture: {fileID: 2800000, guid: ada7a0a8843f859438f7899b939eb2bb, type: 3}
+  my_texture: {fileID: 2800000, guid: 922c5835b9dbe16419599d67fa02cc35, type: 3}
   foundColorObjectData:
   - name: Floor
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -2565,14 +2565,6 @@ MonoBehaviour:
     isCharacter: 1
     isInteractable: 0
     positionOffset: {x: 0.5, y: 0, z: -0.5}
-  - name: Bridge
-    color: {r: 0.59607846, g: 0.34509805, b: 0.24705882, a: 1}
-    prefabObject: {fileID: 8725135954403514953, guid: e7dcaa94e2a1a8648b5e322232fea1a8,
-      type: 3}
-    forceAddFloor: 0
-    isCharacter: 0
-    isInteractable: 0
-    positionOffset: {x: 0, y: 0, z: 0}
   - name: Ice Portal
     color: {r: 0, g: 1, b: 1, a: 1}
     prefabObject: {fileID: 8440568013547720643, guid: 7c1dc2e55843f0549909c2056a11ba49,
@@ -2632,6 +2624,14 @@ MonoBehaviour:
   - name: River
     color: {r: 0.32, g: 0.36, b: 0.64, a: 1}
     prefabObject: {fileID: 3113465961844054527, guid: c48cd250b4434ac4bb265a38ac652bdc,
+      type: 3}
+    forceAddFloor: 0
+    isCharacter: 0
+    isInteractable: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  - name: Bridge
+    color: {r: 0.6, g: 0.35, b: 0.25, a: 1}
+    prefabObject: {fileID: 8725135954403514953, guid: e7dcaa94e2a1a8648b5e322232fea1a8,
       type: 3}
     forceAddFloor: 0
     isCharacter: 0
@@ -4947,22 +4947,22 @@ PrefabInstance:
     - target: {fileID: 8866651722878977881, guid: 87994aa97bf484141ac79d511929ee56,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.47185826
+      value: 0.4718583
       objectReference: {fileID: 0}
     - target: {fileID: 8866651722878977881, guid: 87994aa97bf484141ac79d511929ee56,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015170428
+      value: -0.000000015170423
       objectReference: {fileID: 0}
     - target: {fileID: 8866651722878977881, guid: 87994aa97bf484141ac79d511929ee56,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000008118974
+      value: 0.000000008118972
       objectReference: {fileID: 0}
     - target: {fileID: 8866651722878977881, guid: 87994aa97bf484141ac79d511929ee56,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.88167447
+      value: 0.8816744
       objectReference: {fileID: 0}
     - target: {fileID: 8866651722878977881, guid: 87994aa97bf484141ac79d511929ee56,
         type: 3}
