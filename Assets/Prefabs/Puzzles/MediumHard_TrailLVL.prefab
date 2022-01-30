@@ -3726,6 +3726,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4285982882412738956}
     m_Modifications:
+    - target: {fileID: 1334651553979708630, guid: 2ee19a4678a822b439a692ff27705f99,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1517462356243240911, guid: 2ee19a4678a822b439a692ff27705f99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23277,6 +23282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IcePortal_[1, 4]
       objectReference: {fileID: 0}
+    - target: {fileID: 8783006853219449953, guid: 7c1dc2e55843f0549909c2056a11ba49,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23290,7 +23300,7 @@ PrefabInstance:
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.12
+      value: -5.12
       objectReference: {fileID: 0}
     - target: {fileID: 9108876936061982073, guid: 7c1dc2e55843f0549909c2056a11ba49,
         type: 3}
