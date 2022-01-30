@@ -15,7 +15,7 @@ MonoBehaviour:
   interruptsRiver: 0
   coordinate: {x: 0, y: 0}
   startingState: 3
-  flowDirection: 1
+  flowDirection: 4
   defaultMaterial: {fileID: 2100000, guid: be16a78a8bdd03649b37d04e0e636830, type: 2}
   waterMaterial: {fileID: 2100000, guid: 5dae82ecaca98d94bb7a8b8dd6886064, type: 2}
 --- !u!1001 &2584192563522815260
@@ -28,17 +28,17 @@ PrefabInstance:
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.219555
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.071313
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.5084915
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261900468286359129, guid: 0f6646396061fcc44aca0d3c07d6a8fe,
         type: 3}
